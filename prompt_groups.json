@@ -1,0 +1,16 @@
+{
+  "groups": [
+    {
+      "id": "female-default",
+      "name": "女角色分组"
+    },
+    {
+      "id": "male-default",
+      "name": "男角色分组"
+    }
+  ],
+  "assignments": {
+    "1男友角色2": "male-default",
+    "女友角色1": "female-default"
+  }
+}

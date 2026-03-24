@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+control_panel.pid
+chat_contexts.json
+Memory_Temp/
+CoreMemory/
+forum_data/
+
+.DS_Store
+Thumbs.db

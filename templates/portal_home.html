@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星幻AI 首页</title>
+    <style>
+        :root {
+            --bg-1: #f8fbff;
+            --bg-2: #eef6ff;
+            --bg-3: #fff7ef;
+            --line: rgba(173, 194, 224, 0.54);
+            --text: #142033;
+            --muted: #60708a;
+            --panel: rgba(255, 255, 255, 0.9);
+            --shadow: 0 28px 80px rgba(80, 110, 160, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(124, 176, 255, 0.28), transparent 28%),
+                radial-gradient(circle at 82% 18%, rgba(255, 207, 153, 0.28), transparent 26%),
+                radial-gradient(circle at 68% 78%, rgba(140, 226, 197, 0.26), transparent 24%),
+                linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
+            background-size: 130% 130%;
+            animation: pageFlow 18s ease-in-out infinite alternate;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 999px;
+            filter: blur(18px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            top: 8%;
+            left: -8%;
+            width: 34vw;
+            height: 34vw;
+            background: rgba(137, 183, 255, 0.16);
+            animation: floatBlob 18s ease-in-out infinite;
+        }
+
+        body::after {
+            right: -10%;
+            bottom: 3%;
+            width: 30vw;
+            height: 30vw;
+            background: rgba(255, 204, 153, 0.18);
+            animation: floatBlobAlt 20s ease-in-out infinite;
+        }
+
+        @keyframes pageFlow {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @keyframes floatBlob {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+            50% {
+                transform: translate3d(40px, 24px, 0) scale(1.08);
+            }
+        }
+
+        @keyframes floatBlobAlt {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+            50% {
+                transform: translate3d(-36px, -22px, 0) scale(1.06);
+            }
+        }
+
+        .landing-shell {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 0 10vh;
+        }
+
+        .landing-content {
+            width: min(980px, calc(100vw - 40px));
+            padding: clamp(20px, 3vw, 32px) clamp(12px, 2vw, 18px);
+            text-align: center;
+            transform: translateY(-6vh);
+        }
+
+        .landing-title {
+            margin: 0;
+            font-size: clamp(58px, 8.4vw, 110px);
+            line-height: 1.04;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #122042 0%, #2351a8 34%, #4a88ee 68%, #18315e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .landing-subtitle {
+            width: min(720px, calc(100vw - 64px));
+            margin: 14px auto 0;
+            color: rgba(49, 64, 86, 0.78);
+            font-size: clamp(15px, 1.7vw, 18px);
+            line-height: 1.85;
+            white-space: pre-wrap;
+        }
+
+        .landing-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .portal-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 142px;
+            min-height: 50px;
+            padding: 0 24px;
+            border: 1px solid rgba(173, 194, 224, 0.72);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.68);
+            color: #314056;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+        }
+
+        .portal-button:hover {
+            transform: translateY(-1px);
+            border-color: rgba(99, 136, 224, 0.82);
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .access-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(244, 248, 255, 0.38);
+            backdrop-filter: blur(10px);
+        }
+
+        .access-overlay.is-visible {
+            display: flex;
+        }
+
+        .access-card {
+            width: min(420px, calc(100vw - 32px));
+            padding: 24px 22px 20px;
+            border: 1px solid rgba(173, 194, 224, 0.56);
+            border-radius: 28px;
+            background: var(--panel);
+            box-shadow: 0 28px 80px rgba(80, 110, 160, 0.18);
+            text-align: left;
+        }
+
+        .access-card h2 {
+            margin: 0 0 8px;
+            font-size: 26px;
+            font-weight: 900;
+            color: #16233b;
+        }
+
+        .access-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .access-form {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .access-form input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(173, 194, 224, 0.78);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.92);
+            color: #16233b;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .access-form input:focus {
+            border-color: rgba(63, 109, 246, 0.62);
+            box-shadow: 0 0 0 4px rgba(63, 109, 246, 0.1);
+        }
+
+        .access-actions {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .access-error {
+            min-height: 20px;
+            margin-top: 2px;
+            font-size: 13px;
+            color: #c2410c;
+        }
+
+        @media (max-width: 640px) {
+            .landing-shell {
+                padding: 0 0 8vh;
+            }
+
+            .landing-actions {
+                gap: 10px;
+            }
+
+            .landing-content {
+                transform: translateY(-5vh);
+            }
+
+            .portal-button {
+                min-width: 124px;
+                min-height: 46px;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-shell">
+        <section class="landing-content">
+            <h1 class="landing-title">{{ portal_settings.landing_title }}</h1>
+            {% if portal_settings.landing_subtitle %}
+            <div class="landing-subtitle">{{ portal_settings.landing_subtitle }}</div>
+            {% endif %}
+            <div class="landing-actions">
+                <button type="button" class="portal-button" id="openAccessBtn">{{ portal_settings.console_button_text }}</button>
+                <a class="portal-button" href="{{ portal_settings.tutorial_button_url or '#' }}" target="_blank" rel="noopener noreferrer">{{ portal_settings.tutorial_button_text }}</a>
+                <a class="portal-button" href="{{ portal_settings.support_button_url or '#' }}" target="_blank" rel="noopener noreferrer">{{ portal_settings.support_button_text }}</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="access-overlay" id="accessOverlay">
+        <div class="access-card">
+            <h2>{{ portal_settings.access_title }}</h2>
+            <p>{{ portal_settings.access_description }}</p>
+            <form class="access-form" id="accessForm">
+                <input type="password" id="accessPasswordInput" placeholder="请输入验证密码" autocomplete="current-password">
+                <div class="access-error" id="accessErrorText"></div>
+                <div class="access-actions">
+                    <button type="button" class="portal-button" id="closeAccessBtn">取消</button>
+                    <button type="submit" class="portal-button" id="submitAccessBtn">确认进入</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const openAccessBtn = document.getElementById('openAccessBtn');
+        const closeAccessBtn = document.getElementById('closeAccessBtn');
+        const accessOverlay = document.getElementById('accessOverlay');
+        const accessForm = document.getElementById('accessForm');
+        const accessPasswordInput = document.getElementById('accessPasswordInput');
+        const accessErrorText = document.getElementById('accessErrorText');
+        const submitAccessBtn = document.getElementById('submitAccessBtn');
+
+        function toggleAccessOverlay(visible) {
+            if (!accessOverlay) {
+                return;
+            }
+            accessOverlay.classList.toggle('is-visible', visible);
+            if (!visible) {
+                accessErrorText.textContent = '';
+                accessForm.reset();
+            } else {
+                setTimeout(() => accessPasswordInput.focus(), 40);
+            }
+        }
+
+        if (openAccessBtn) {
+            openAccessBtn.addEventListener('click', function() {
+                toggleAccessOverlay(true);
+            });
+        }
+
+        if (closeAccessBtn) {
+            closeAccessBtn.addEventListener('click', function() {
+                toggleAccessOverlay(false);
+            });
+        }
+
+        if (accessOverlay) {
+            accessOverlay.addEventListener('click', function(event) {
+                if (event.target === accessOverlay) {
+                    toggleAccessOverlay(false);
+                }
+            });
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && accessOverlay && accessOverlay.classList.contains('is-visible')) {
+                toggleAccessOverlay(false);
+            }
+        });
+
+        if (accessForm) {
+            accessForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                accessErrorText.textContent = '';
+                submitAccessBtn.disabled = true;
+                submitAccessBtn.textContent = '验证中...';
+
+                try {
+                    const response = await fetch('/verify_access', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            password: accessPasswordInput.value || '',
+                        }),
+                    });
+
+                    const data = await response.json();
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.message || '验证失败');
+                    }
+
+                    window.location.href = data.redirect_url || '/console';
+                } catch (error) {
+                    accessErrorText.textContent = error.message || '验证失败，请稍后重试。';
+                } finally {
+                    submitAccessBtn.disabled = false;
+                    submitAccessBtn.textContent = '确认进入';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

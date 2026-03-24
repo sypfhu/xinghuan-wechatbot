@@ -1,0 +1,12 @@
+{
+  "hero_badge": "",
+  "announcement_title": "",
+  "announcement_content": "本软件是开源软件，完全免费。",
+  "primary_action_text": "",
+  "primary_action_target": "section-quick-start",
+  "secondary_action_text": "",
+  "secondary_action_target": "section-logs",
+  "help_button_url": "",
+  "legal_toggle_text": "显示法律声明",
+  "legal_content_html": "<p>Modified based on the KouriChat project.</p><p>原项目版权: Copyright (C) 2025, umaru<br>上游二开版本版权: Copyright (C) 2025, iwyxdxl<br>当前修改部分版权: Copyright (C) 2026 【你的名字或团队名称】</p><p>本项目基于 KouriChat 开源项目及其二次开发版本再次修改而成，当前版本主要包含界面调整、控制台优化、外部首页重构、管理后台拆分及相关交互适配。</p><p>本软件是自由软件，您可以根据 GNU 通用公共许可证 第3版 (或更高版本) 的条款重新发布和修改本软件。</p><p>本软件按“现状”提供，不提供任何明示或暗示的担保（包括适销性或特定用途适用性）。<br>如您未收到完整的许可证副本，请访问 <a href=\"【GPL 中文版链接】\" target=\"_blank\" rel=\"noopener noreferrer\">GNU GPL 3.0 中文版</a> 获取。</p><p>源代码获取：<br>原项目源代码：<a href=\"https://github.com/KouriChat/KouriChat\" target=\"_blank\" rel=\"noopener noreferrer\">https://github.com/KouriChat/KouriChat</a><br>上游二开源代码：<a href=\"https://github.com/iwyxdxl/WeChatBot_WXAUTO_SE\" target=\"_blank\" rel=\"noopener noreferrer\">https://github.com/iwyxdxl/WeChatBot_WXAUTO_SE</a><br>当前版本源代码：<a href=\"【你的项目地址】\" target=\"_blank\" rel=\"noopener noreferrer\">【你的项目地址】</a></p><p>本软件仅供学习和娱乐使用，请勿用于违法用途，否则产生的一切法律责任均与任何作者无关。</p>"
+}
