@@ -93,10 +93,10 @@ GROUP_KEYWORD_REPLY_IGNORE_PROBABILITY = True
 
 # 登录配置编辑器设置
 ENABLE_LOGIN_PASSWORD = False
-LOGIN_PASSWORD = ''
+LOGIN_PASSWORD = '123456'
 # 远程管理员后台地址，用于读取外部首页/控制台首页配置和远程验证进入密码
 # 例如: 'https://pfhu.com/admin'
-REMOTE_CONTENT_BASE_URL = ''
+REMOTE_CONTENT_BASE_URL = 'https://admin.pfhu.com'
 PORT = 5000
 
 # 文字指令识别开关
@@ -117,7 +117,7 @@ USE_VOICE_CALL_FOR_REMINDERS = False
 ENABLE_ONLINE_API = True
 ONLINE_BASE_URL = 'https://vg.v1api.cc/v1'
 ONLINE_MODEL = 'net-gpt-4o-mini'
-ONLINE_API_KEY = ''
+ONLINE_API_KEY = '1'
 ONLINE_API_TEMPERATURE = 0.7
 ONLINE_API_MAX_TOKEN = 2000
 SEARCH_DETECTION_PROMPT = '是否需要查询今天的天气、最新的新闻事件、特定网站的内容、股票价格、特定人物的最新动态等'
